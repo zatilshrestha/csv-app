@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: csv_app
+    volumes:
+      - .:/var/www
+    ports:
+      - "9000:8000"
+    command: php artisan serve --host=0.0.0.0 --port=8000
+    depends_on:
+      - db
+
+  queue:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: csv_app_queue
+    command: php artisan queue:work --verbose --tries=3 --timeout=120
+    volumes:
+      - .:/var/www
+    depends_on:
+      - db
+
+  db:
+    image: mysql:8
+    container_name: csv_app_mysql
+    environment:
+      MYSQL_DATABASE: csv_app
+      MYSQL_USER: csv_app
+      MYSQL_PASSWORD: csv_app
+      MYSQL_ROOT_PASSWORD: csv_app
+    ports:
+      - "3315:3306"
