@@ -19,7 +19,6 @@ class Company extends Model
         'email',
         'phone_number',
         'is_duplicate',
-        'duplicate_group_id',
     ];
 
     protected $casts = [

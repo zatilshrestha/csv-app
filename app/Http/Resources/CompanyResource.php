@@ -20,7 +20,6 @@ class CompanyResource extends JsonResource
             'email' => $this->email,
             'phone_number' => $this->phone_number,
             'is_duplicate' => $this->is_duplicate,
-            'duplicate_group_id' => $this->duplicate_group_id,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];

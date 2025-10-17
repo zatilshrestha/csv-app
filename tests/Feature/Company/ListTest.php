@@ -10,6 +10,7 @@ use Tests\TestCase;
 class ListTest extends TestCase
 {
     use RefreshDatabase;
+
     public function test_success(): void
     {
         $user = User::factory()->create();

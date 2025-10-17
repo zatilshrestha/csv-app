@@ -21,7 +21,6 @@ class CompanyFactory extends Factory
             'email' => fake()->unique()->companyEmail(),
             'phone_number' => fake()->phoneNumber(),
             'is_duplicate' => false,
-            'duplicate_group_id' => null,
         ];
     }
 }

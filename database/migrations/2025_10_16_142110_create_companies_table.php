@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('email');
             $table->string('phone_number', 20);
             $table->boolean('is_duplicate')->default(false);
-            $table->unsignedBigInteger('duplicate_group_id')->nullable();
             $table->timestamps();
 
             $table->index(['company_name', 'email', 'phone_number']);
