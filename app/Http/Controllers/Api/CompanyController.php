@@ -8,7 +8,6 @@ use App\Http\Resources\CompanyResource;
 use App\Models\Company;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
-use Illuminate\Support\Facades\Response;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class CompanyController extends Controller
@@ -24,16 +23,16 @@ class CompanyController extends Controller
 
     public function export(CompanyExportRequest $request): StreamedResponse
     {
+        $fileName = 'companies_export_' . now()->format('Y_m_d_His') . '.csv';
+
         $query = Company::applyFilters($request);
 
-        $headers = ['company_name', 'email', 'phone_number', 'is_duplicate'];
-
-        $callback = function () use ($query, $headers) {
+        $response = new StreamedResponse(function () use ($query) {
             $file = fopen('php://output', 'w');
 
-            fputcsv($file, $headers);
+            fputcsv($file, ['Company Name', 'Email', 'Phone Number', 'Is Duplicate']);
 
-            $query->chunk(Company::EXPORT_BATCH_SIZE, function ($companies) use ($file, $headers) {
+            $query->chunk(Company::EXPORT_BATCH_SIZE, function ($companies) use ($file) {
                 foreach ($companies as $company) {
                     fputcsv($file, [
                         $company->company_name,
@@ -45,11 +44,11 @@ class CompanyController extends Controller
             });
 
             fclose($file);
-        };
+        });
 
-        return Response::stream($callback, 200, [
-            "Content-Type" => "text/csv",
-            "Content-Disposition" => "attachment; filename=companies.csv",
-        ]);
+        $response->headers->set('Content-Type', 'text/csv');
+        $response->headers->set('Content-Disposition', "attachment; filename={$fileName}");
+
+        return $response;
     }
 }
