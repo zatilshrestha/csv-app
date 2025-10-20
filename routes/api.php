@@ -10,4 +10,5 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
 
     Route::get('/companies', [CompanyController::class, 'index']);
+    Route::get('/companies/export', [CompanyController::class, 'export']);
 });

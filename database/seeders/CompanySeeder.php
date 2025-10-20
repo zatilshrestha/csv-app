@@ -20,6 +20,6 @@ class CompanySeeder extends Seeder
                 'phone_number' => '+977 9800000000',
             ]);
 
-        Company::factory(10)->create();
+        Company::factory(10000)->create();
     }
 }
