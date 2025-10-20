@@ -10,7 +10,25 @@
 ## About Project
 
 This is a **Laravel 12** application called **CSV App** that allows users to upload CSV files containing company data.
-The application processes the uploaded CSV files, validates the data, and stores valid entries in a **MySql** database.
+The application processes the uploaded CSV files, validates the data, and stores valid entries in the database. Here are
+the technologies and features used in this project:
+
+### Backend:
+- Laravel 12
+- Docker
+- PHP 8.2
+- MySQL Database
+- Eloquent ORM
+- Laravel Sanctum for authentication
+- Job Queues for processing CSV files asynchronously
+- PhpUnit for testing
+
+### Frontend:
+- Blade Templating Engine
+- Vue3 for SAP
+- Bootstrap 5 for styling
+- Axios for AJAX requests
+
 It also provides a user interface to view, and download the data with filter. Application is containerized using *
 *Docker** for easy setup and deployment. App uses server-side pagination for efficient large data handling. It uses *
 *Sanctum** for user authentication and authorization.
