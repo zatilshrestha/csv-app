@@ -11,4 +11,5 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::get('/companies', [CompanyController::class, 'index']);
     Route::get('/companies/export', [CompanyController::class, 'export']);
+    Route::post('/companies/import', [CompanyController::class, 'import']);
 });
