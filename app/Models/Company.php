@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class Company extends Model
 {
     use HasFactory;
-    const IMPORT_BATCH_SIZE = 10; // Updated batch size as per requirement
+    const IMPORT_BATCH_SIZE = 100; // Updated batch size as per requirement
     const EXPORT_BATCH_SIZE = 100;
     const PER_PAGE = 25;
     const FILTER_DUPLICATES = 'duplicates';
