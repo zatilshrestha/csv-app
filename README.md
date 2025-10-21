@@ -9,7 +9,7 @@
 
 ## About Project
 
-This is a **Laravel 12** application called **CSV App** that allows users to upload CSV files containing company data.
+This is a **Laravel 12** web application called **CSV App** that allows users to upload CSV files containing company data.
 The application processes the uploaded CSV files, validates the data, and stores valid entries in the database. Here are
 the technologies and features used in this project:
 
@@ -29,9 +29,15 @@ the technologies and features used in this project:
 - Bootstrap 5 for styling
 - Axios for AJAX requests
 
-It also provides a user interface to view, and download the data with filter. Application is containerized using *
-*Docker** for easy setup and deployment. App uses server-side pagination for efficient large data handling. It uses *
-*Sanctum** for user authentication and authorization.
+### Features:
+- User Authentication (Login, Logout)
+- Company data listing with Pagination
+- Filtering companies by All, Duplicates or Unique entries
+- Companies data export to CSV
+- Company data upload via CSV files
+- Data Validation (Email format, required fields) when uploading CSV files
+- Asynchronous Processing of CSV files using Job Queues
+- Error logging for invalid entries
 
 ## Project Setup Instructions
 
@@ -82,6 +88,12 @@ Run migrations with seeders
 php artisan migrate --seed
 ```
 
+Run queue worker
+
+```
+php artisan queue:work
+```
+
 Access the application at http://localhost:9000
 
 Run tests
@@ -95,7 +107,3 @@ Run specific test file
 ```
 php artisan test --filter=LoginTest
 ```
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
