@@ -63,17 +63,6 @@ Install Laravel Dependencies
 
 ```
 composer install
-``` 
-
-Update .env file:
-
-```
-DB_CONNECTION=mysql
-DB_HOST=db
-DB_PORT=3306
-DB_DATABASE=csv_app
-DB_USERNAME=csv_app
-DB_PASSWORD=csv_app
 ```
 
 Generate app key
