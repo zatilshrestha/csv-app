@@ -24,8 +24,9 @@ class ListTest extends TestCase
 
         $responseData = $response->json();
 
-        $this->assertCount(20, $responseData['data']);
+        $this->assertCount(10, $responseData['data']);
         $this->assertEquals(1, $responseData['meta']['current_page']);
+        $this->assertEquals(2, $responseData['meta']['last_page']);
         $this->assertEquals(20, $responseData['meta']['total']);
     }
 
