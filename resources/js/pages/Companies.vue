@@ -15,6 +15,7 @@ const pagination = ref({
     last_page: 1,
 });
 const filter = ref('');
+const totalCount = ref(0)
 
 onMounted(() => {
     fetchCompanies();
@@ -26,6 +27,7 @@ function handleFileChange(event) {
 
 async function fetchCompanies(page = 1) {
     loadingData.value = true;
+    totalCount.value = 0;
 
     try {
         const response = await axios.get('/companies', {
@@ -37,6 +39,7 @@ async function fetchCompanies(page = 1) {
 
         companies.value = response.data.data;
         pagination.value = response.data.meta;
+        totalCount.value = response.data.meta.total;
     } catch (err) {
         toaster.error('Failed to fetch companies');
     } finally {
@@ -126,6 +129,8 @@ function exportCompanies() {
                            v-model="filter" @change="fetchCompanies(1)">
                     <label class="btn btn-outline-dark btn-sm" for="filterUnique">Unique</label>
                 </div>
+
+                <small class="text-muted ms-2">Total: {{ totalCount }}</small>
             </div>
 
             <div>

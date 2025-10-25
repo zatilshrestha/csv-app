@@ -83,8 +83,6 @@ Run queue worker
 php artisan queue:work
 ```
 
-Access the application at http://localhost:9000
-
 Run tests
 
 ```
@@ -96,3 +94,29 @@ Run specific test file
 ```
 php artisan test --filter=LoginTest
 ```
+
+Install Node.js dependencies
+
+```
+npm install
+```
+
+Start the development server
+
+```
+npm run dev
+```
+
+Access Application
+
+```
+http://localhost:9000
+```
+
+Default User Credentials
+
+```
+Email: admin@email.com
+Password: password
+```
+
