@@ -1,5 +1,5 @@
 Company Name,Email,Phone Number
 Arona Technologies,arona@email.com,9800000000
-Test 101,test101@email.com,9811111111
-Test 102,102,1243512345
-Test 103,test103@email.com,
+Valid Company,test101@email.com,9811111111
+Invalid Email Co,102,1243512345
+Invalid Phone Co,test103@email.com,
