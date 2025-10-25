@@ -9,11 +9,35 @@
 
 ## About Project
 
-This is a **Laravel 12** application called **CSV App** that allows users to upload CSV files containing company data.
-The application processes the uploaded CSV files, validates the data, and stores valid entries in a **MySql** database.
-It also provides a user interface to view, and download the data with filter. Application is containerized using *
-*Docker** for easy setup and deployment. App uses server-side pagination for efficient large data handling. It uses *
-*Sanctum** for user authentication and authorization.
+This is a **Laravel 12** web application called **CSV App** that allows users to upload CSV files containing company data.
+The application processes the uploaded CSV files, validates the data, and stores valid entries in the database. Here are
+the technologies and features used in this project:
+
+### Backend:
+- Laravel 12
+- Docker
+- PHP 8.2
+- MySQL Database
+- Eloquent ORM
+- Laravel Sanctum for authentication
+- Job Queues for processing CSV files asynchronously
+- PhpUnit for testing
+
+### Frontend:
+- Blade Templating Engine
+- Vue3 for SAP
+- Bootstrap 5 for styling
+- Axios for AJAX requests
+
+### Features:
+- User Authentication (Login, Logout)
+- Company data listing with Pagination
+- Filtering companies by All, Duplicates or Unique entries
+- Companies data export to CSV
+- Company data upload via CSV files
+- Data Validation (Email format, required fields) when uploading CSV files
+- Asynchronous Processing of CSV files using Job Queues
+- Error logging for invalid entries
 
 ## Project Setup Instructions
 
@@ -39,17 +63,6 @@ Install Laravel Dependencies
 
 ```
 composer install
-``` 
-
-Update .env file:
-
-```
-DB_CONNECTION=mysql
-DB_HOST=db
-DB_PORT=3306
-DB_DATABASE=csv_app
-DB_USERNAME=csv_app
-DB_PASSWORD=csv_app
 ```
 
 Generate app key
@@ -64,7 +77,11 @@ Run migrations with seeders
 php artisan migrate --seed
 ```
 
-Access the application at http://localhost:9000
+Run queue worker
+
+```
+php artisan queue:work
+```
 
 Run tests
 
@@ -78,6 +95,28 @@ Run specific test file
 php artisan test --filter=LoginTest
 ```
 
-## License
+Install Node.js dependencies
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```
+npm install
+```
+
+Start the development server
+
+```
+npm run dev
+```
+
+Access Application
+
+```
+http://localhost:9000
+```
+
+Default User Credentials
+
+```
+Email: admin@email.com
+Password: password
+```
+
