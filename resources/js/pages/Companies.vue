@@ -134,6 +134,11 @@ function exportCompanies() {
             </div>
 
             <div>
+                <a href="https://github.com/zatilshrestha/csv-app/blob/master/public/samples/import-company.csv"
+                   target="_blank" class="me-2 text-success text-decoration-none" title="Sample format to import data">
+                    Sample
+                </a>
+
                 <input type="file" ref="fileInput" accept=".csv"
                        class="form-control form-control-sm d-inline-block w-auto me-2" @change="handleFileChange"/>
 
